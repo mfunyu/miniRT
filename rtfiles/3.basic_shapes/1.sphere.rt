@@ -1,0 +1,14 @@
+R	800		600
+A	0.1		255,255,255
+l	50,100,-100		1.0		255,255,255
+
+c	0,0,-20			0,0,1			90
+
+##### a sphere at the coordinates {0, 0, 0} #####
+
+sp	0,0,0			20		255,0,0
+
+
+# With the
+# camera facing the sphere, display the rendered image. The
+# sphere should be visible and displayed without glitching.

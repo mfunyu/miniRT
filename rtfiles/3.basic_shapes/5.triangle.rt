@@ -1,0 +1,30 @@
+R	800		600
+A	0.1		255,255,255
+l	100,100,0		1.0		255,255,255
+
+c	0,0,-30			0,0,1			90
+c	20,0,-20		-1,0,1			90
+c	30,0,0			-1,0,0			90
+
+##### Place a triangle with the following coordinates
+
+tr	0,20,0		0,0,0	0,10,20		255,255,0
+
+# point1 {0,20,0}
+# point2 {0,0,0}
+# point3 {0,10,20}
+# with a color set to {255, 255, 0}.
+# Display the image rendered.
+# The triangle should be visible and displayed without glitching.
+# tr	-20,-20,0		-20,20,0	20,20,0		255,0,0
+
+### for DBG ###
+# camera : 前{0,-0.5,0.7} -> red
+# camera : 後{0,-0.5,-0.7} -> green
+# camera : 右{0.7,-0.5,0} -> right blue
+# camera : 左{-0.7,-0.5,0} -> blue
+
+sp	0,0,-10			10			255,0,0
+# sp	0,0,-100		10			0,255,0
+# sp	100,0,-50		10			0,255,255
+# sp	-100,0,-50		10			0,0,255

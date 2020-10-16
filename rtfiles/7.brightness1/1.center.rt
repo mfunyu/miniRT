@@ -1,0 +1,28 @@
+R	800		600
+A	0.1		255,255,255
+
+####	put a spot left or right of the camera #####
+
+sp		0,0,0		50			255,255,0
+
+c		0,0,-100		0,0,1			90
+
+#right
+l		100,0,0		 1.0		255,255,255
+
+#left
+# l		-100,0,0		 1.0		255,255,255
+
+# Place a sphere at the coordinates {0, 0, 0}, the camera
+# facing the sphere, and put a spot left or right of the camera
+# but positioned in such a way that the sphere will be lit sideways.
+# Display the rendered image. The sphere should be visible,
+# illuminated and displayed without glitching.
+
+
+### for DBG ###
+
+# l		0,0,-100		 1.0		255,255,255
+
+# pl		0,-40,0			0,-1,0		255,255,255
+# pl		0,0,1000			0,0,1		255,255,255

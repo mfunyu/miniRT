@@ -1,0 +1,23 @@
+R	800		600
+A	0.1		255,255,255
+l	100,100,-100		0.6		255,255,255
+
+pl	0,-100,0	0,1,0		255,255,100
+
+# 正面球
+sp	-30,0,0			20		255,255,0
+sp	0,0,0			20		255,0,0
+sp	30,0,0			20		0,255,255
+
+##### place the camera at a random location ####
+
+# 横回転
+## 正面見下ろし
+c 75,30,-75 			-1,-1,1		90
+c -75,30,-75 			1,-1,1		90
+
+# Generate a random scene and place the camera at a random
+# location which isn't on any axis or a diagonal, pointed
+# towards the coordinates {0, 0, 0} and display
+# the rendered image. The scene must be visible and
+# displayed without glitching.

@@ -1,0 +1,26 @@
+R	800		600
+A	0.1		255,255,255
+l	100,100,-100		1.0		255,255,255
+
+pl	0,-100,0	0,1,0		255,255,100
+
+# 正面球
+sp	-30,0,0			20		255,255,0
+sp	0,0,0			20		255,0,0
+sp	30,0,0			20		0,255,255
+
+
+##### place the camera at a random location ####
+
+# 横回転
+## 正面
+c 75,0,-75 			-1,0,1		90
+c 0,0,-100 			0,0,1		90
+c -75,0,-75 			1,0,1		90
+
+
+# Place three cameras in the configuration file and ask the student
+# to show you which keyboard keys they choose to switch between cameras.
+# You must be able to switch between camera without exiting the program.
+# The scene must be visible and displayed from the new point
+# of view without glitching.

@@ -1,0 +1,30 @@
+R	800		600
+A	0.1		255,255,255
+l	50,100,-100		1.0		255,255,255
+
+c	0,50,-50			0,-0.5,0.7			90
+# c	0,50,-50			0,-0.5,-0.7			90
+# c	0,50,-50			0.7,-0.5,0			90
+# c	0,50,-50			-0.7,-0.5,0			90
+# c	0,100,-50				0,-1,0				90
+
+### a plane with a 'z' value of null ####
+
+pl	0,0,0		0,1,0		255,255,0
+			#	x,y,z	#
+
+# With the camera facing the plane,
+# display the rendered image.
+# The plane should be visible and
+# displayed without glitching.
+
+### for DBG ###
+# camera : 前{0,-0.5,0.7} -> red
+# camera : 後{0,-0.5,-0.7} -> green
+# camera : 右{0.7,-0.5,0} -> right blue
+# camera : 左{-0.7,-0.5,0} -> blue
+
+# sp	0,0,0			20			255,0,0
+# sp	0,0,-100		20			0,255,0
+# sp	100,0,-50		20			0,255,255
+# sp	-100,0,-50		20			0,0,255

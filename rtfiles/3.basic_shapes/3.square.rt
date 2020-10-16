@@ -1,0 +1,27 @@
+R	800		600
+A	0.1		255,255,255
+l	50,100,-100		1.0		255,255,255
+
+c	0,0,-30			0,0,1			90
+# c	0,20,-30			0,0,1			90
+# c	0,100,0			0,-1,0			90
+
+##### a square's center at the coordinates {0, 0, 0} #####
+
+sq	0,0,0	0,0,1		10		0,0,255
+
+# a side size of 10
+# a blue {0,0,255} color
+# extending along the y axis. -> {0,0,1}
+
+# With the camera facing the square,
+# display the rendered image.
+# The square should be visible and
+# displayed without glitching.
+
+# sq	0,0,10	0,0,1		50		255,0,255
+
+# sp	0,0,0			20			255,0,0
+# sp	0,0,-100		20			0,255,0
+# sp	100,0,-50		20			0,255,255
+# sp	-100,0,-50		20			0,0,255

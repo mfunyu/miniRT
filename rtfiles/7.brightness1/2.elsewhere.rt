@@ -1,0 +1,29 @@
+R	800		600
+A	0.1		255,255,255
+
+
+####	put a spot left or right of the camera #####
+
+sp		30,50,60		50			255,0,255
+
+c		20,20,-50		0,0,1			90
+
+#right
+l		120,50,60		 1.0		255,255,255
+
+#left
+# l		-80,50,60		 1.0		255,255,255
+
+# Place a sphere at some coordinates resulting from a translation,
+# the camera facing the sphere, and place a spot left or right of
+# the camera but positioned in such a way that the sphere will be
+# lit sideways. Display the rendered image. The sphere should be
+# visible, properly illuminated and displayed without glitch.
+# Properly means that the halo of light should be computed
+# after translation not before.
+
+### for DBG ###
+
+sp		0,0,0		5		255,0,0
+# pl		0,-40,0			0,-1,0		255,255,255
+# pl		0,0,1000			0,0,1		255,255,255

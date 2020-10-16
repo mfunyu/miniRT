@@ -1,0 +1,27 @@
+R	800		600
+A	0.1		255,255,255
+
+l	-100,100,-100		0.6		255,255,255
+
+c	0,0,-100			0,0,1			90
+# c	0,0,-100			0,0,-1			90
+# c	0,0,-100			0.5,0,-1		90
+
+# pl	0,0,100		0,0,1		255,255,255
+pl	0,-70,0	0,1,0		255,255,100
+
+sp	-30,0,0			20		255,255,0
+sp	0,0,0			20		255,0,0
+sp	30,0,0			20		0,255,25
+
+##### place the camera extending along the x axis ####
+
+c	100,0,0			-1,0,0			90
+c	-100,0,0		1,0,0			90
+
+
+# Generate a random scene
+# camera pointed towards the coordinates
+# {0, 0, 0} and display the rendered image.
+# The scene must be visible
+# and displayed without glitching.

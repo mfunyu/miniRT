@@ -1,0 +1,19 @@
+R	800		600
+A	0.1		255,255,255
+l	100,100,-100		1.0		255,255,255
+
+c	0,0,-100			0,0,1			90
+c	100,0,-20		-1,0,1			90
+c	100,0,0			-1,0,0			90
+
+###### a cylinder extending along the y axis ######
+
+cy	0,0,0		0,1,0		20		50		255,255,255
+
+# With the camera facing the cylinder,
+# display the rendered image. The cylinder
+# should be visible and displayed without glitching.
+
+### for DBG ###
+
+pl		0,-20,0	0,-1,0		255,255,255
