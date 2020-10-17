@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 18:29:27 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/10/17 15:47:28 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/17 16:06:46 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,31 +83,24 @@ void	set_cylinder(t_c camera, t_info *info, t_elem *elem, int index)
 	adjust_normal_vec(info->n, camera.coord, info->p);
 }
 
-int		is_behind_cy(t_info *info, t_elem *elem, int index, double direction[3])
+int		is_behind_cy(t_info *info, t_elem *elem, int index, double adjusted[3])
 {
-	double	dcopy[3];
-	double	pcopy[3];
-	double	ccopy[3];
+	double	direction[3];
+	double	intersect[3];
+	double	center[3];
 	double	t;
 	int		i;
 
 	i = 0;
 	while (elem->cy[i].exist)
 	{
-		set_vec(pcopy, info->p);
+		set_vec(intersect, info->p);
 		if (info->type == CYLINDER && info->index == i)
-		{
-			t = 0;
-			while (t < 3)
-			{
-				pcopy[(int)t] += EPSILON * direction[(int)t];
-				t += 1;
-			}
-		}
-		vec_sub(dcopy, pcopy, elem->l[index].coord);
-		set_vec(ccopy, elem->cy[i].center);
-		t = calc_cylinder(dcopy, pcopy, ccopy, elem->cy[i]);
-		if (t > 0 && is_closer(dcopy, t))
+			set_vec(intersect, adjusted);
+		vec_sub(direction, intersect, elem->l[index].coord);
+		set_vec(center, elem->cy[i].center);
+		t = calc_cylinder(direction, intersect, center, elem->cy[i]);
+		if (t > 0 && is_closer(direction, t))
 			break ;
 		i++;
 	}
