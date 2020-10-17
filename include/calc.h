@@ -15,8 +15,6 @@
 
 # include "minirt.h"
 
-# define VEC[3] {0, 0, 0}
-
 double	dot_p(double *p1, double *p2);
 void	cross_p(double dest[3], double a[3], double b[3]);
 void	vec_add(double dst[3], double *v1, double *v2);

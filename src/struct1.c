@@ -21,7 +21,7 @@ void	init_struct(t_elem *elem, int *cnt)
 	if (!cnt[1])
 	{
 		elem->a.ratio = 0;
-		set_vec(elem->a.rgb, VEC);
+		vec_multi(elem->a.rgb, 0);
 	}
 	if (!(elem->c = (t_c *)ft_calloc(cnt[2] + 1, sizeof(t_c))))
 		exit_failure(errno);
