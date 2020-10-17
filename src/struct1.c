@@ -6,19 +6,24 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 13:48:39 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/10/01 20:40:22 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/17 12:28:03 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "read.h"
 #include "exit.h"
+#include "calc.h"
 
 void	init_struct(t_elem *elem, int *cnt)
 {
-	if (cnt[0] != 1 || cnt[1] != 1 || cnt[2] < 1)
+	if (cnt[0] != 1 || cnt[1] > 1)
 		exit_failure(-2);
-	elem->r.exist = 0;
-	elem->a.exist = 0;
+	if (!cnt[1])
+	{
+		double vec[3] = {0,0,0};
+		elem->a.ratio = 0;
+		set_vec(elem->a.rgb, vec);
+	}
 	if (!(elem->c = (t_c *)ft_calloc(cnt[2] + 1, sizeof(t_c))))
 		exit_failure(errno);
 	if (!(elem->l = (t_l *)ft_calloc(cnt[3] + 1, sizeof(t_l))))

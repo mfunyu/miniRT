@@ -6,7 +6,7 @@
 #    By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/19 22:35:48 by mfunyu            #+#    #+#              #
-#    Updated: 2020/10/07 14:59:21 by mfunyu           ###   ########.fr        #
+#    Updated: 2020/10/17 13:01:01 by mfunyu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,10 +58,13 @@ ifeq ($(UNAME), Darwin)
 	# leaks -atExit -- ./leakscheck "
 else
 ifeq ($(UNAME), Linux)
-	$(CC) $(CFLAGS) -g -fsanitize=address -o leakscheck $(NAME) $(OBJS) $(LIBFT) -L. -lmlx_Linux -L/usr/include/../lib -lXext -lX11 -lm
+	$(CC) $(CFLAGS) -g -fsanitize=address -o leakscheck $(OBJS) $(LIBFT) -L. -lmlx_Linux -L/usr/include/../lib -lXext -lX11 -lm
 	# ./leakscheck "
 endif
 endif
+
+dbg: $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) -g -fsanitize=address -o dbg $(OBJS) $(LIBFT) libmlx.dylib
 
 clear :
 	rm -rf *.bmp

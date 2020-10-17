@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 14:02:34 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/10/07 14:40:16 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/17 12:58:37 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,26 +56,29 @@ void	create_img(t_img *img, t_elem *elem, int camera)
 {
 	t_info		*info;
 	t_screen	screen;
-	int			background;
 	int			y;
 	int			x;
 
 	if (!(info = (t_info *)malloc(sizeof(t_info))))
 		exit_failure(errno);
-	set_screen(&screen, elem, elem->c[camera]);
-	background = 0;
+	if (elem->c[camera].exist)
+		set_screen(&screen, elem, elem->c[camera]);
 	y = -1;
 	while (++y < elem->r.height)
 	{
-		x = 0;
-		while (x < elem->r.width)
+		x = -1;
+		while (++x < elem->r.width)
 		{
+			if (!elem->c[camera].exist)
+			{
+				my_mlx_pixel_put(img, x, y, 0);
+				continue ;
+			}
 			set_screen_vec(&screen, info, x, y);
 			if (closest_obj(info, elem, &screen) >= 0)
 				my_mlx_pixel_put(img, x, y, set_color(info, elem));
 			else
-				my_mlx_pixel_put(img, x, y, background);
-			x++;
+				my_mlx_pixel_put(img, x, y, 0);
 		}
 	}
 	SAFE_FREE(info);

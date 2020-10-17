@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:54:29 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/10/01 19:48:06 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/17 12:13:54 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,12 @@ typedef enum	e_object_type
 
 typedef struct	s_r
 {
-	int			exist;
 	int			width;
 	int			height;
 }				t_r;
 
 typedef struct	s_a
 {
-	int			exist;
 	double		ratio;
 	double		rgb[3];
 }				t_a;

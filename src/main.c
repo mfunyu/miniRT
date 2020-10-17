@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:44:59 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/10/16 20:37:18 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/17 12:55:33 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	init_t_mlx(t_mlx *mlx, t_elem *elem)
 	mlx->c_index = 0;
 	c_num = 0;
 	while (elem->c[c_num].exist)
+		c_num++;
+	if (!c_num)
 		c_num++;
 	mlx->imgdata = ft_calloc((c_num + 1), sizeof(t_img));
 	i = 0;
