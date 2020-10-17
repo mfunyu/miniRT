@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 14:51:52 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/10/17 16:05:03 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/17 16:09:31 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int		is_behind_sp(t_info *info, t_elem *elem, int index, double adjusted[3])
 		if (info->type == SPHERE && info->index == i)
 			set_vec(intersect, adjusted);
 		vec_sub(direction, intersect, elem->l[index].coord);
-		t = calc_sphere(direction, intersect, elem->sp[i].center, elem->sp[i].r);
+		t = calc_sphere(direction, intersect,
+							elem->sp[i].center, elem->sp[i].r);
 		if (t > 0 && is_closer(direction, t))
 			break ;
 		i++;
