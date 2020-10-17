@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 14:02:34 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/10/17 12:58:37 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/17 13:06:12 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,9 @@ void	create_img(t_img *img, t_elem *elem, int camera)
 		x = -1;
 		while (++x < elem->r.width)
 		{
-			if (!elem->c[camera].exist)
-			{
-				my_mlx_pixel_put(img, x, y, 0);
-				continue ;
-			}
-			set_screen_vec(&screen, info, x, y);
-			if (closest_obj(info, elem, &screen) >= 0)
+			if (elem->c[camera].exist)
+				set_screen_vec(&screen, info, x, y);
+			if (elem->c[camera].exist && closest_obj(info, elem, &screen) >= 0)
 				my_mlx_pixel_put(img, x, y, set_color(info, elem));
 			else
 				my_mlx_pixel_put(img, x, y, 0);

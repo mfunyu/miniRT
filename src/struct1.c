@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 13:48:39 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/10/17 12:28:03 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/17 13:08:08 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ void	init_struct(t_elem *elem, int *cnt)
 		exit_failure(-2);
 	if (!cnt[1])
 	{
-		double vec[3] = {0,0,0};
 		elem->a.ratio = 0;
-		set_vec(elem->a.rgb, vec);
+		set_vec(elem->a.rgb, VEC);
 	}
 	if (!(elem->c = (t_c *)ft_calloc(cnt[2] + 1, sizeof(t_c))))
 		exit_failure(errno);

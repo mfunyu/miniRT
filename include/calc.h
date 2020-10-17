@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 13:23:32 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/09/22 20:33:32 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/17 13:08:38 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CALC_H
 
 # include "minirt.h"
+
+# define VEC[3] {0, 0, 0}
 
 double	dot_p(double *p1, double *p2);
 void	cross_p(double dest[3], double a[3], double b[3]);

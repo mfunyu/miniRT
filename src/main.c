@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:44:59 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/10/17 12:55:33 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/17 13:09:16 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ void	start_mlx_loop(t_mlx *mlx, t_elem *elem, char *name)
 	mlx_put_image_to_window(mlx->mlx, mlx->window, mlx->imgdata[0].image, 0, 0);
 	mlx_key_hook(mlx->window, &key_hook, (void *)mlx);
 	mlx_hook(mlx->window, FOCUS_IN, FOCUS_CHANGE_MASK, &reput_img, (void *)mlx);
-	mlx_hook(mlx->window, DESTROY_NOTIFY, STRUCTURE_NOTIFY_MASK, &close_exit, (void *)mlx);
+	mlx_hook(mlx->window, DESTROY_NOTIFY,
+				STRUCTURE_NOTIFY_MASK, &close_exit, (void *)mlx);
 	mlx_loop(mlx->mlx);
 }
 
