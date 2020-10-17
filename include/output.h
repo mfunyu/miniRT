@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 14:25:03 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/09/18 21:27:58 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/17 15:35:38 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int				set_color(t_info *info, t_elem *elem);
 ** objects
 */
 int				is_behind_pl(t_info *info, t_elem *elem, int index);
-int				is_behind_sp(t_info *info, t_elem *elem, int index);
+int				is_behind_sp(t_info *info, t_elem *elem, int index, double direction[3]);
 int				is_behind_sq(t_info *info, t_elem *elem, int index);
-int				is_behind_cy(t_info *info, t_elem *elem, int index);
+int				is_behind_cy(t_info *info, t_elem *elem, int index, double direction[3]);
 int				is_behind_tr(t_info *info, t_elem *elem, int index);
 
 void			set_plane(t_c camera, t_info *info, t_elem *elem, int index);

@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 14:52:21 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/09/22 20:24:12 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/17 15:35:27 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@
 int		is_behind(t_info *info, t_elem *elem, int index)
 {
 	double	direction[3];
-	int		k;
+	// int		k;
 
 	vec_sub(direction, info->p, elem->l[index].coord);
-	k = 0;
-	while (k < 3)
-	{
-		info->p[k] += EPSILON * direction[k];
-		k++;
-	}
+	// k = 0;
+	// while (k < 3)
+	// {
+	// 	info->p[k] += EPSILON * direction[k];
+	// 	k++;
+	// }
 	if (is_behind_pl(info, elem, index))
 		return (1);
-	if (is_behind_sp(info, elem, index))
+	if (is_behind_sp(info, elem, index, direction))
 		return (1);
 	if (is_behind_sq(info, elem, index))
 		return (1);
-	if (is_behind_cy(info, elem, index))
+	if (is_behind_cy(info, elem, index, direction))
 		return (1);
 	if (is_behind_tr(info, elem, index))
 		return (1);
