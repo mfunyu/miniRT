@@ -14,8 +14,8 @@ pl	0,-10,0		0,-1,0		255,255,255
 #### change resolution #####
 
 ## same ratio (similar) ###
-R	1000 800
-# R	500 400
+# R	1000 800
+R	500 400
 # R	100 80
 
 ## small ##
