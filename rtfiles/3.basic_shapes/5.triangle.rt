@@ -9,6 +9,7 @@ c	30,0,0			-1,0,0			110
 ##### Place a triangle with the following coordinates
 
 tr	0,20,0		0,0,0	0,10,20		255,255,0
+tr	0,20,0		0,0,0	0,10,20		255,255,0
 
 # point1 {0,20,0}
 # point2 {0,0,0}

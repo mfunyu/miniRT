@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 21:05:07 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/09/23 11:25:08 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/20 12:36:12 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,22 +80,15 @@ void	set_triangle(t_c camera, t_info *info, t_elem *elem, int index)
 	adjust_normal_vec(info->n, camera.coord, info->p);
 }
 
-int		is_behind_tr(t_info *info, t_elem *elem, int index)
+int		is_behind_tr(t_elem *elem, double intersect[3], double direction[3])
 {
-	double	direction[3];
 	double	t;
 	int		i;
 
 	i = 0;
 	while (elem->tr[i].exist)
 	{
-		if (info->type == TRIANGLE && info->index == i)
-		{
-			i++;
-			continue;
-		}
-		vec_sub(direction, info->p, elem->l[index].coord);
-		t = calc_triangle(direction, info->p, elem->tr[i]);
+		t = calc_triangle(direction, intersect, elem->tr[i]);
 		if (t >= 0 && is_closer(direction, t))
 			break ;
 		i++;

@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 18:28:20 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/09/22 20:45:40 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/20 12:39:51 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,16 @@ void	set_plane(t_c camera, t_info *info, t_elem *elem, int index)
 	adjust_normal_vec(info->n, camera.coord, info->p);
 }
 
-int		is_behind_pl(t_info *info, t_elem *elem, int index)
+int		is_behind_pl(t_elem *elem, double intersect[3], double direction[3])
 {
-	double	d[3];
 	double	t;
 	int		i;
 
 	i = 0;
 	while (elem->pl[i].exist)
 	{
-		if (info->type == PLANE && info->index == i)
-		{
-			i++;
-			continue;
-		}
-		vec_sub(d, info->p, elem->l[index].coord);
-		t = calc_plane(info->p, elem->pl[i].coord, elem->pl[i].n, d);
-		if (t > 0 && is_closer(d, t))
+		t = calc_plane(intersect, elem->pl[i].coord, elem->pl[i].n, direction);
+		if (t > 0 && is_closer(direction, t))
 			break ;
 		i++;
 	}

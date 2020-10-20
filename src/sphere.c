@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 14:51:52 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/10/17 16:09:31 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/20 12:37:20 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,14 @@ void	set_sphere(t_c camera, t_info *info, t_elem *elem, int index)
 	adjust_normal_vec(info->n, camera.coord, info->p);
 }
 
-int		is_behind_sp(t_info *info, t_elem *elem, int index, double adjusted[3])
+int		is_behind_sp(t_elem *elem, double intersect[3], double direction[3])
 {
-	double	intersect[3];
-	double	direction[3];
 	double	t;
 	int		i;
 
 	i = 0;
 	while (elem->sp[i].exist)
 	{
-		set_vec(intersect, info->p);
-		if (info->type == SPHERE && info->index == i)
-			set_vec(intersect, adjusted);
-		vec_sub(direction, intersect, elem->l[index].coord);
 		t = calc_sphere(direction, intersect,
 							elem->sp[i].center, elem->sp[i].r);
 		if (t > 0 && is_closer(direction, t))

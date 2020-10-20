@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 14:52:21 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/10/17 16:01:59 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/20 12:44:28 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ int		is_behind(t_info *info, t_elem *elem, int index)
 		adjusted[k] = info->p[k] + EPSILON * direction[k];
 		k++;
 	}
-	if (is_behind_pl(info, elem, index))
+	if (is_behind_pl(elem, adjusted, direction))
 		return (1);
-	if (is_behind_sp(info, elem, index, adjusted))
+	if (is_behind_sp(elem, adjusted, direction))
 		return (1);
-	if (is_behind_sq(info, elem, index))
+	if (is_behind_sq(elem, adjusted, direction))
 		return (1);
-	if (is_behind_cy(info, elem, index, adjusted))
+	if (is_behind_cy(elem, adjusted, direction))
 		return (1);
-	if (is_behind_tr(info, elem, index))
+	if (is_behind_tr(elem, adjusted, direction))
 		return (1);
 	return (0);
 }

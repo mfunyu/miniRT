@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:40:19 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/10/17 15:52:45 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/20 12:37:25 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,22 +87,15 @@ void	set_square(t_c camera, t_info *info, t_elem *elem, int index)
 	adjust_normal_vec(info->n, camera.coord, info->p);
 }
 
-int		is_behind_sq(t_info *info, t_elem *elem, int index)
+int		is_behind_sq(t_elem *elem, double intersect[3], double direction[3])
 {
-	double	direction[3];
 	double	t;
 	int		i;
 
 	i = 0;
 	while (elem->sq[i].exist)
 	{
-		if (info->type == SQUARE && info->index == i)
-		{
-			i++;
-			continue;
-		}
-		vec_sub(direction, info->p, elem->l[index].coord);
-		t = calc_square(info->p, direction, elem->sq[i]);
+		t = calc_square(intersect, direction, elem->sq[i]);
 		if (t >= 0 && is_closer(direction, t))
 			break ;
 		i++;
