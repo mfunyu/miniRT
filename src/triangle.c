@@ -6,62 +6,68 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 21:05:07 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/10/20 12:36:12 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/20 23:10:36 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "output.h"
 
-double	calc_ab(double e1[3], double e2[3], double r[3], double d[3])
-{
-	double	alpha[3];
-	double	beta[3];
-	double	denominator;
-	double	u;
-	double	v;
-
-	cross_p(alpha, d, e2);
-	cross_p(beta, r, e1);
-	denominator = dot_p(e1, alpha);
-	if (-EPSILON < denominator && denominator < EPSILON)
-		return (-1);
-	u = dot_p(alpha, r) / denominator;
-	if (u < 0 || u > 1)
-		return (-1);
-	v = dot_p(d, beta) / denominator;
-	if (v < 0 || v > 1 || v + u > 1)
-		return (-1);
-	return (dot_p(e2, beta) / denominator);
-}
-
-double	calc_triangle(double d[3], double s[3], t_tr tr)
-{
-	double	e1[3];
-	double	e2[3];
-	double	r[3];
-	double	t;
-
-	vec_sub(e1, tr.coord1, tr.coord2);
-	vec_sub(e2, tr.coord1, tr.coord3);
-	vec_sub(r, tr.coord1, s);
-	t = calc_ab(e1, e2, r, d);
-	if (t >= 0)
-		return (t);
-	vec_sub(e1, tr.coord3, tr.coord1);
-	vec_sub(e2, tr.coord3, tr.coord2);
-	vec_sub(r, tr.coord3, s);
-	return (calc_ab(e1, e2, r, d));
-}
-
-void	set_triangle_normal(t_tr tr, t_info *info)
+void	set_triangle_normal(t_tr tr, double normal[3])
 {
 	double	ab[3];
 	double	ac[3];
 
 	vec_sub(ab, tr.coord1, tr.coord2);
 	vec_sub(ac, tr.coord1, tr.coord3);
-	cross_p(info->n, ab, ac);
-	normalize(info->n);
+	cross_p(normal, ab, ac);
+	normalize(normal);
+}
+
+bool	is_intersect_inside_tr(t_tr tr, double p[3], double normal[3])
+{
+	double	ab[3];
+	double	bc[3];
+	double	ca[3];
+	double	coord_to_p[3];
+	double	check[3];
+
+	vec_sub(coord_to_p, tr.coord1, p);
+	cross_p(check, ab, coord_to_p);
+	if (dot_p(check, normal) < 0)
+		return (false);
+	vec_sub(bc, tr.coord2, tr.coord3);
+	vec_sub(coord_to_p, tr.coord2, p);
+	cross_p(check, bc, coord_to_p);
+	if (dot_p(check, normal) < 0)
+		return (false);
+	vec_sub(ca, tr.coord3, tr.coord1);
+	vec_sub(coord_to_p, tr.coord3, p);
+	cross_p(check, ca, coord_to_p);
+	if (dot_p(check, normal) < 0)
+		return (false);
+	return (true);
+}
+
+double	calc_triangle(double dir[3], double orig[3], t_tr tr)
+{
+	double	normal[3];
+	double	p[3];
+	double	t;
+	int		k;
+
+	set_triangle_normal(tr, normal);
+	t = calc_plane(orig, tr.coord1, normal, dir);
+	if (t < EPSILON)
+		return (-1);
+	k = 0;
+	while (k < 3)
+	{
+		p[k] = orig[k] + t * dir[k];
+		k++;
+	}
+	if (is_intersect_inside_tr(tr, p, normal))
+		return (t);
+	return (-1);
 }
 
 void	set_triangle(t_c camera, t_info *info, t_elem *elem, int index)
@@ -76,7 +82,7 @@ void	set_triangle(t_c camera, t_info *info, t_elem *elem, int index)
 	info->t = t;
 	set_vec(info->rgb, elem->tr[index].rgb);
 	set_pvec(info->p, camera.coord, info->dc, t);
-	set_triangle_normal(elem->tr[index], info);
+	set_triangle_normal(elem->tr[index], info->p);
 	adjust_normal_vec(info->n, camera.coord, info->p);
 }
 
