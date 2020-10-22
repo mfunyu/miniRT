@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 14:25:03 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/10/20 12:55:05 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/20 23:12:35 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "mlx.h"
 # include "minirt.h"
 # include "calc.h"
+
+# include <stdbool.h>
 
 # define EPSILON 1e-6f
 
