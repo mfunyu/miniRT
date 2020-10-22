@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 21:05:07 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/10/22 11:53:35 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/22 11:58:14 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,13 @@ double	calc_triangle(double dir[3], double orig[3], t_tr tr)
 	double	normal[3];
 	double	p[3];
 	double	t;
+	int		k;
 
 	set_triangle_normal(tr, normal);
 	t = calc_plane(orig, tr.coord1, normal, dir);
 	if (t < EPSILON)
 		return (-1);
-	int k = 0;
+	k = 0;
 	while (k < 3)
 	{
 		p[k] = orig[k] + t * dir[k];
