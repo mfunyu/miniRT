@@ -6,7 +6,7 @@
 /*   By: mfunyu <mfunyu@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 11:38:03 by mfunyu            #+#    #+#             */
-/*   Updated: 2020/10/16 21:57:04 by mfunyu           ###   ########.fr       */
+/*   Updated: 2020/10/22 12:15:06 by mfunyu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int		close_exit(t_mlx *mlx)
 		i++;
 	}
 	SAFE_FREE(mlx->imgdata);
-	SAFE_FREE(mlx->mlx);
 	free_elem(mlx->elem);
 	exit(EXIT_SUCCESS);
 }
